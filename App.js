@@ -1,11 +1,25 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import Header from './components/Header';
+import Input from './components/atoms/Input';
+import KostCard from './components/molecules/KostCard';
+import Gap from './components/atoms/Gap';
 
 const App = () => {
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>U-KOST</Text>
-      <Text>Universitas Klabat Kost</Text>
+      <Header greetings="Good afternoon Clifford," />
+      <Input placeholder="Search here" />
+      <View style={styles.mainContent}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Gap height={20} />
+          <KostCard />
+          <KostCard />
+          <KostCard />
+          <KostCard />
+          <KostCard />
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -15,11 +29,12 @@ export default App;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#525252',
   },
-  title: {
-    fontSize: 30,
-    fontWeight: '700',
+  mainContent: {
+    marginTop: 12,
+    flex: 1,
+    marginHorizontal: 22,
+    // backgroundColor: 'white',
   },
 });
