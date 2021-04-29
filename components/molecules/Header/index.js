@@ -14,7 +14,6 @@ export default Header;
 
 const styles = StyleSheet.create({
   screen: {
-    marginHorizontal: 22,
     marginVertical: 20,
     backgroundColor: '#525252',
   },
