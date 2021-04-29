@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import {IconSearch} from '../../../assets/icon';
+import {IconSearch} from '../../../assets';
 
 const SearchBar = ({...props}) => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import Card from '../Card';
 import Gap from '../../atoms/Gap';
-import {IconMale} from '../../../assets/icon';
+import {IconMale} from '../../../assets';
 
 const KostCard = () => {
   return (

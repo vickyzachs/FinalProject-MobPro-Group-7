@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {IconBell} from '../../assets/icon';
-import SearchBar from '../../components/atoms/SearchBar';
-import Header from '../../components/molecules/Header';
-import KostCard from '../../components/molecules/KostCard';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {IconBell} from '../../assets';
+import {Header, KostCard, SearchBar} from '../../components';
 
 const HomeScreen = () => {
   return (
@@ -20,15 +12,13 @@ const HomeScreen = () => {
           <IconBell />
         </TouchableOpacity>
       </View>
-      <SearchBar placeholder="Search Here" />
+      <SearchBar placeholder="Search here" />
       <View style={styles.mainContent}>
         <KostCard />
       </View>
     </View>
   );
 };
-
-export default HomeScreen;
 
 const styles = StyleSheet.create({
   screen: {
@@ -47,3 +37,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 22,
   },
 });
+
+export default HomeScreen;

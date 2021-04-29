@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import HomeScreen from './pages/HomeScreen';
+import {StyleSheet, View} from 'react-native';
+import {HomeScreen} from './pages';
 
 const App = () => {
   return (
