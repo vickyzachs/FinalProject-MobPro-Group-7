@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Header from '../../components/Header';
-import Input from '../../components/atoms/Input';
+import SearchBar from '../../components/atoms/SearchBar';
+import Header from '../../components/molecules/Header';
 import KostCard from '../../components/molecules/KostCard';
 
 const HomeScreen = () => {
   return (
     <View style={styles.screen}>
       <Header greetings="Good afternoon Clifford," />
-      <Input placeholder="Search here" />
+      <SearchBar placeholder="Search Here" />
       <View style={styles.mainContent}>
         <KostCard />
       </View>

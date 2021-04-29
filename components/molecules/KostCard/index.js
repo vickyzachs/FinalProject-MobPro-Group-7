@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import Card from '../Card';
 import Gap from '../../atoms/Gap';
+import {IconMale} from '../../../assets/icon';
 
 const KostCard = () => {
   return (
@@ -9,15 +10,20 @@ const KostCard = () => {
       <Card>
         <View style={styles.container}>
           <View style={{marginLeft: 10}}>
-            <Card>
-              <View style={styles.gambarKost}></View>
-            </Card>
+            <View style={styles.containerGambarKost}>
+              <Image
+                style={styles.gambarKost}
+                source={require('../../../assets/KostImage/kost.png')}
+              />
+            </View>
           </View>
           <View style={{marginRight: 29}}>
             <Gap height={8} />
             <Text style={styles.namaKost}>Kost Mizpa</Text>
             <Gap height={17} />
-            <Gap height={20} />
+            <View style={{alignItems: 'center'}}>
+              <IconMale />
+            </View>
             <Text style={styles.gender}>Wanita</Text>
             <Gap height={20} />
             <Text style={styles.alamatKost}>Jalan Kanaan, Airmadidi Bawah</Text>
@@ -43,29 +49,35 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   namaKost: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   gender: {
-    fontSize: 9,
+    fontSize: 11,
     textAlign: 'center',
   },
   alamatKost: {
-    fontSize: 12,
+    fontSize: 13,
     textAlign: 'center',
   },
   hargaKost: {
     fontSize: 13,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: 5,
   },
   month: {
     fontWeight: '100',
   },
   gambarKost: {
-    width: 125,
+    maxWidth: 120,
     height: 120,
-    marginTop: 7,
+    maxHeight: 120,
+    borderRadius: 10,
+  },
+  containerGambarKost: {
+    justifyContent: 'center',
+    flex: 1,
   },
 });
