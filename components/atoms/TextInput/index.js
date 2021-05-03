@@ -13,6 +13,9 @@ const TextInput = ({children, ...props}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginRight: 30,
+  },
   input: {
     width: 285,
     height: 45,

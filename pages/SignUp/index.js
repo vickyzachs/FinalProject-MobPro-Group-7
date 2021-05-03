@@ -1,7 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {IconLogo, IconMessage, IconPassword, IconUser} from '../../assets';
-import {Card, Gap, TextInput} from '../../components';
+import {Button, Card, Gap, TextInput} from '../../components';
 
 const SignUp = () => {
   return (
@@ -24,18 +30,45 @@ const SignUp = () => {
       </View>
       <Card style={styles.card}>
         <Gap height={24} />
-        <TextInput placeholder="Clifford">
+        <TextInput placeholder="Username">
           <IconUser />
         </TextInput>
         <Gap height={13} />
-        <TextInput placeholder="Clifford">
+        <TextInput placeholder="Email">
           <IconMessage />
         </TextInput>
         <Gap height={13} />
-        <TextInput placeholder="Clifford">
+        <TextInput placeholder="Password">
           <IconPassword />
         </TextInput>
+        <Gap height={41} />
+        <Button />
+        <Gap height={22} />
       </Card>
+      <View
+        style={{
+          marginTop: 210,
+          height: 50,
+          alignSelf: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        }}>
+        <Text style={{fontSize: 16, color: 'white'}}>
+          Already have account?{' '}
+        </Text>
+        <TouchableOpacity activeOpacity={0.7}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 'bold',
+              textDecorationLine: 'underline',
+              color: 'white',
+            }}>
+            Sign In
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -84,6 +117,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   card: {
+    alignSelf: 'center',
     backgroundColor: '#3C3C3C',
+    height: 296,
+    width: 333,
+    top: 270,
+    position: 'absolute',
   },
 });
