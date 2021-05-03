@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {IconBell} from '../../assets';
 import {Header, KostCard, SearchBar} from '../../components';
 
@@ -14,7 +14,9 @@ const HomeScreen = () => {
       </View>
       <SearchBar placeholder="Search here" />
       <View style={styles.mainContent}>
-        <KostCard />
+        <ScrollView>
+          <KostCard />
+        </ScrollView>
       </View>
     </View>
   );
