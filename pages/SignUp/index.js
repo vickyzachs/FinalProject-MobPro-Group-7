@@ -45,25 +45,14 @@ const SignUp = () => {
         <Button />
         <Gap height={22} />
       </Card>
-      <View
-        style={{
-          marginTop: 210,
-          height: 50,
-          alignSelf: 'center',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row',
-        }}>
-        <Text style={{fontSize: 16, color: 'white'}}>
-          Already have account?{' '}
-        </Text>
+      <View style={styles.textSignIn}>
+        <Text style={styles.text}>Already have account? </Text>
         <TouchableOpacity activeOpacity={0.7}>
           <Text
             style={{
-              fontSize: 16,
-              fontWeight: 'bold',
+              ...styles.text,
               textDecorationLine: 'underline',
-              color: 'white',
+              fontWeight: 'bold',
             }}>
             Sign In
           </Text>
@@ -123,5 +112,17 @@ const styles = StyleSheet.create({
     width: 333,
     top: 270,
     position: 'absolute',
+  },
+  textSignIn: {
+    marginTop: 210,
+    height: 50,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  text: {
+    fontSize: 16,
+    color: 'white',
   },
 });
