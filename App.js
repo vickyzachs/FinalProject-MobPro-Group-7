@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {HomeScreen} from './pages';
+import {HomeScreen, SignUp} from './pages';
 
 const App = () => {
   return (
     <View style={styles.screen}>
-      <HomeScreen />
+      <SignUp />
     </View>
   );
 };
