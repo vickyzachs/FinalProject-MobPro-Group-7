@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const Button = () => {
+const Button = ({title}) => {
   return (
     <TouchableOpacity activeOpacity={0.8}>
       <View style={styles.container}>
-        <Text style={styles.text}>Create Account</Text>
+        <Text style={styles.text}>{title}</Text>
       </View>
     </TouchableOpacity>
   );

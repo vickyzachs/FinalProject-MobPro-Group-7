@@ -23,7 +23,7 @@ const SignUp = () => {
           <View style={styles.textAreaWrapper}>
             <Text style={styles.textTitle}>Sign Up </Text>
             <Text style={styles.textDescription}>
-              Sign in now there are so many new boarding house waiting for you!
+              Save your time, money and energy by just search your boarding house in U-KOST
             </Text>
           </View>
         </View>
@@ -42,7 +42,7 @@ const SignUp = () => {
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button />
+        <Button title="Create Account"/>
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
@@ -67,6 +67,7 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#555555',
   },
   topBack: {
     backgroundColor: '#272629',
