@@ -12,7 +12,7 @@ const Router = () => {
         component={HomeScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+        <Stack.Screen
         name="SignUp"
         component={SignUp}
         options={{headerShown: false}}
