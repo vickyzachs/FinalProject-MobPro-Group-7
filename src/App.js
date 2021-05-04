@@ -1,18 +1,14 @@
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Router from './router';
-import { SignIn } from './pages';
+import Router from '../src/router';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <SignIn />
+      <Router />
     </NavigationContainer>
-    
   );
 };
 
 export default App;
-
-
