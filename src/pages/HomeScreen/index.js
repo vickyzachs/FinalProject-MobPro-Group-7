@@ -1,7 +1,15 @@
 import React from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {IconBell} from '../../assets';
-import {Header, KostCard, SearchBar} from '../../components';
+import {
+  Image,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {IconBell, IconMale} from '../../assets';
+import {Card, Gap, Header, KostCard, SearchBar} from '../../components';
 
 const HomeScreen = () => {
   return (

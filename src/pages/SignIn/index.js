@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconLogo, IconMessage, IconPassword} from '../../assets';
 import {Button, Card, Gap, TextInput} from '../../components';
 
@@ -37,7 +32,7 @@ const SignIn = () => {
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button title="Sign In"/>
+        <Button title="Sign In" />
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
@@ -49,7 +44,7 @@ const SignIn = () => {
               textDecorationLine: 'underline',
               fontWeight: 'bold',
             }}>
-           Create Now
+            Create Now
           </Text>
         </TouchableOpacity>
       </View>
@@ -62,7 +57,7 @@ export default SignIn;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#555555'
+    backgroundColor: '#555555',
   },
   topBack: {
     backgroundColor: '#272629',
