@@ -5,7 +5,7 @@ import {HomeScreen, SignUp} from './pages';
 const App = () => {
   return (
     <View style={styles.screen}>
-      <SignUp />
+      <HomeScreen />
     </View>
   );
 };
