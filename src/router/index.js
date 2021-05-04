@@ -8,8 +8,8 @@ const Router = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="SignIn"
-        component={SignIn}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -18,8 +18,8 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
+        name="SignIn"
+        component={SignIn}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
