@@ -1,17 +1,50 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconLogo, IconMessage, IconPassword, IconUser} from '../../assets';
 import {Button, Card, Gap, TextInput} from '../../components';
+import {showMessage} from 'react-native-flash-message';
+import firebase from '../../config/Firebase';
 
-const SignUp = () => {
+const SignUp = ({}) => {
+
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onSubmit = () => {
+    const data = {
+      userName: userName,
+      email: email,
+      password: password,
+    };
+
+    firebase
+    .auth().createUserWithEmailAndPassword(email, password)
+    .then(res => {
+      const uid = res.user.uid;
+      const data = {
+          userName : userName,
+          email : email,
+      };
+      firebase.database().ref(`users/${uid}`).set(data);
+      setUserName('');
+      setEmail('');
+      setPassword('');
+      navigation.navigate('SignIn');
+  }) 
+  .catch(error => {
+      showMessage({
+          message: error.message,
+          type: 'default',
+          backgroundColor: '#D9435E',
+          color: 'white',
+        });
+  });
+};
+
+
   return (
-    <View style={styles.container}>
+      <View style={styles.container}>
       <View style={styles.topBackContainer}>
         <View style={styles.topBack}>
           <View style={styles.circle}>
@@ -30,19 +63,32 @@ const SignUp = () => {
       </View>
       <Card style={styles.card}>
         <Gap height={24} />
-        <TextInput placeholder="Username">
+        <TextInput 
+        placeholder="Username" 
+        value={userName}
+        onChangeText={value => setUserName(value)}
+        >
           <IconUser />
         </TextInput>
         <Gap height={13} />
-        <TextInput placeholder="Email">
+        <TextInput 
+        placeholder="Email" 
+        value={email}
+        onChangeText={value => setEmail(value)}
+        >
           <IconMessage />
         </TextInput>
         <Gap height={13} />
-        <TextInput placeholder="Password">
+        <TextInput 
+        placeholder="Password" 
+        value={password}
+        onChangeText={value => setPassword(value)}
+        secureTextEntry
+        >
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button title="Create Account"/>
+        <Button title="Create Account" onPress={onSubmit}/>
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
