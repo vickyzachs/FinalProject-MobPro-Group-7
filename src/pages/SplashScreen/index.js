@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { IconUKost } from '../../assets'
 
 const SplashScreen = ({navigation}) => {
     useEffect(() => {
@@ -10,8 +11,8 @@ const SplashScreen = ({navigation}) => {
 
 
     return (
-        <View>
-            <Text style={styles.text}>U-Kost</Text>
+        <View style={styles.container}>
+            <IconUKost/>
         </View>
     );
 };
@@ -19,9 +20,12 @@ const SplashScreen = ({navigation}) => {
 export default SplashScreen;
 
 const styles = StyleSheet.create({
-   text: {
-    fontSize: 32,
+    container: {
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
+    },
+   text: {
+    fontSize: 32,
    },
 });

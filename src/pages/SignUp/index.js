@@ -5,7 +5,7 @@ import {Button, Card, Gap, TextInput} from '../../components';
 import {showMessage} from 'react-native-flash-message';
 import firebase from '../../config/Firebase';
 
-const SignUp = ({}) => {
+const SignUp = ({navigation}) => {
 
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -88,7 +88,7 @@ const SignUp = ({}) => {
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button title="Create Account" onPress={onSubmit}/>
+        <Button title="Create Account" onPress={onSubmit} />
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
