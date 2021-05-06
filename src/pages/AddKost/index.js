@@ -1,27 +1,58 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {IconLogo, LogoUpload} from '../../assets';
 import {Button, Card, Gap, Header, TextInput} from '../../components';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {showMessage} from 'react-native-flash-message';
+import firebase from '../../config/Firebase';
 
 const AddKost = ({navigation}) => {
   const [kostName, setKostName] = useState('');
   const [address, setAddress] = useState('');
   const [kostPrice, setKostPrice] = useState('');
-  const [tipe, setTipe] = useState('');
+  const [tipeKost, setTipe] = useState('');
+
+  const [photo, setPhoto] = useState('');
+  const [hasPhoto, setHasPhoto] = useState(false);
+  const [photoBase64, setPhotoBase64] = useState('');
 
   const onSubmit = () => {
     const data = {
       kostName: kostName,
       address: address,
       kostPrice: kostPrice,
+      tipeKost: tipeKost,
+      photo: photoBase64,
     };
+    firebase.database().ref('mitraKost').push(data);
   };
 
   const radio_props = [
     {label: 'Laki-Laki', value: 0},
     {label: 'Perempuan', value: 1},
   ];
+
+  const getKostImage = () => {
+    launchImageLibrary(
+      {maxHeight: 120, maxWidth: 120, includeBase64: true},
+      res => {
+        if (res.didCancel) {
+          setHasPhoto(false);
+          showMessage({
+            message: 'Upload foto dibatalkan',
+            type: 'default',
+            backgroundColor: '#09435E',
+            color: 'white',
+          });
+        } else {
+          setPhoto(res.uri);
+          setPhotoBase64(res.base64);
+          setHasPhoto(true);
+        }
+      },
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -32,12 +63,13 @@ const AddKost = ({navigation}) => {
       </View>
       <Gap height={24} />
       <View style={styles.textAreaWrapper}>
-        <Header greetings="Good afternoon Users," style={styles.customHeader}/>
+        <Header greetings="Good afternoon Users," style={styles.customHeader} />
         <Text style={styles.textBiasa}>Add Kost</Text>
       </View>
       <Card style={styles.card}>
         <Gap height={20} />
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity activeOpacity={0.7} onPress={getKostImage}>
+          {hasPhoto && <Image source={{uri: photo}} />}
           <View style={styles.photo}>
             <LogoUpload />
           </View>
@@ -46,17 +78,20 @@ const AddKost = ({navigation}) => {
         <TextInput
           placeholder="Input your kost name"
           value={kostName}
-          onChangeText={value => setKostName(value)}></TextInput>
+          onChangeText={value => setKostName(value)}
+        />
         <Gap height={20} />
         <TextInput
           placeholder="Input your kost address"
           value={address}
-          onChangeText={value => setAddress(value)}></TextInput>
+          onChangeText={value => setAddress(value)}
+        />
         <Gap height={20} />
         <TextInput
           placeholder="Input your kost price"
           value={kostPrice}
-          onChangeText={value => setKostPrice(value)}></TextInput>
+          onChangeText={value => setKostPrice(value)}
+        />
         <Gap height={20} />
         <Text style={styles.textBiasa}>Choose your type kost</Text>
         <Gap height={5} />
@@ -73,7 +108,7 @@ const AddKost = ({navigation}) => {
           />
         </View>
         <Gap height={20} />
-        <Button title="Submit" />
+        <Button title="Submit" onPress={onSubmit} />
       </Card>
     </View>
   );
