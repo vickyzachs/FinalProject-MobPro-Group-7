@@ -1,12 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {SignUp, SignIn, HomeScreen} from '../pages';
+import {SignUp, SignIn, HomeScreen, Profile} from '../pages';
 
 const Stack = createStackNavigator();
 
 const Router = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="SignIn"
         component={SignIn}
