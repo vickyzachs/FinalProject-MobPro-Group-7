@@ -9,12 +9,12 @@ import { AddKost, HomeScreenMitra } from './pages';
 
 const App = () => {
   return (
-    <NavigationContainer>
-     <Router />
-     <FlashMessage position="top"/>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //  <Router />
+    //  <FlashMessage position="top"/>
+    // </NavigationContainer>
     //<HomeScreenMitra/>
-    //<AddKost/>
+    <AddKost/>
   );
 };
 
