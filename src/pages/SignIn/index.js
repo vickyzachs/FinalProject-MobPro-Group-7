@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconLogo, IconMessage, IconPassword} from '../../assets';
 import {Button, Card, Gap, TextInput} from '../../components';
+import firebase from '../../config/Firebase';
+import {showMessage} from 'react-native-flash-message';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onSubmit = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(res => navigation.navigate('HomeScreen'))
+      .catch(error =>
+        showMessage({
+          message: error.message,
+          type: 'default',
+          backgroundColor: '#D9435E',
+          color: 'white',
+        }),
+      );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topBackContainer}>
@@ -24,15 +44,22 @@ const SignIn = () => {
       </View>
       <Card style={styles.card}>
         <Gap height={24} />
-        <TextInput placeholder="Email">
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={value => setEmail(value)}>
           <IconMessage />
         </TextInput>
         <Gap height={13} />
-        <TextInput placeholder="Password">
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={value => setPassword(value)}
+          secureTextEntry>
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button title="Sign In" />
+        <Button title="Sign In" onPress={onSubmit} />
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
@@ -43,7 +70,8 @@ const SignIn = () => {
               ...styles.text,
               textDecorationLine: 'underline',
               fontWeight: 'bold',
-            }}>
+            }}
+            onPress={() => navigation.navigate('SignUp')}>
             Create Now
           </Text>
         </TouchableOpacity>

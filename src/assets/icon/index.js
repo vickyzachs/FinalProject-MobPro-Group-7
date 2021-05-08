@@ -5,6 +5,8 @@ import IconLogo from './logo.svg';
 import IconMessage from './message.svg';
 import IconUser from './user.svg';
 import IconPassword from './password.svg';
+import IconUKost from './UKostLogo.svg';
+import LogoUpload from './logo_upload.svg';
 
 export {
   IconMale,
@@ -14,4 +16,6 @@ export {
   IconMessage,
   IconUser,
   IconPassword,
+  IconUKost,
+  LogoUpload,
 };
