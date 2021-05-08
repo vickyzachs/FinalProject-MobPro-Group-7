@@ -13,7 +13,30 @@ const SignIn = ({navigation}) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(res => navigation.navigate('HomeScreen'))
+      .then(res => {
+        const uid = res.user.uid;
+        firebase
+          .database()
+          .ref(`users/${uid}`)
+          .on('value', response => {
+            try {
+              const role = response.val().role;
+              if (role === 1) {
+                navigation.navigate('HomeScreenMitra');
+              }
+              if (role === 0) {
+                navigation.navigate('HomeScreen');
+              }
+            } catch (error) {
+              showMessage({
+                message: 'User not found role is missing',
+                type: 'default',
+                backgroundColor: '#D9435E',
+                color: 'white',
+              });
+            }
+          });
+      })
       .catch(error =>
         showMessage({
           message: error.message,
@@ -59,7 +82,7 @@ const SignIn = ({navigation}) => {
           <IconPassword />
         </TextInput>
         <Gap height={41} />
-        <Button title="Sign In" onPress={onSubmit} />
+        <Button title="Sign In" onPress={onSubmit} style={{width: 120}} />
         <Gap height={22} />
       </Card>
       <View style={styles.textSignIn}>
@@ -127,7 +150,7 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     backgroundColor: '#3C3C3C',
-    height: 296,
+    height: 246,
     width: 333,
     top: 270,
     position: 'absolute',

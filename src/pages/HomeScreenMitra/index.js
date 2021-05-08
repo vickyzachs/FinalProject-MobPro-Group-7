@@ -10,7 +10,7 @@ import {IconBell} from '../../assets';
 import {Header, KostCard} from '../../components';
 import firebase from '../../config/Firebase';
 
-const HomeScreenMitra = () => {
+const HomeScreenMitra = ({navigation}) => {
   const [dataKost, setDataKost] = useState([]);
 
   useEffect(() => {
@@ -39,7 +39,19 @@ const HomeScreenMitra = () => {
     <View style={styles.screen}>
       <View style={styles.header}>
         <Header greetings="Good afternoon Users," />
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => {
+            firebase
+              .auth()
+              .signOut()
+              .then(() => {
+                navigation.navigate('SignIn');
+              })
+              .catch(error => {
+                // An error happened.
+              });
+          }}>
           <IconBell />
         </TouchableOpacity>
       </View>

@@ -7,8 +7,12 @@ import IconUser from './user.svg';
 import IconPassword from './password.svg';
 import IconUKost from './UKostLogo.svg';
 import LogoUpload from './logo_upload.svg';
+import IconPemilik from './pemilik_kost 1.svg';
+import IconPencari from './pencari_kost 1.svg';
 
 export {
+  IconPencari,
+  IconPemilik,
   IconMale,
   IconBell,
   IconSearch,

@@ -1,5 +1,7 @@
+import {act} from 'react-test-renderer';
+
 const initialState = {
-  toggleModal: true,
+  toggleModal: false,
 };
 
 const reducer = (state = initialState, action) => {

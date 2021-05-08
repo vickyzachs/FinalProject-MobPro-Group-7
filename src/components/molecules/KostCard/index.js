@@ -3,8 +3,9 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import Card from '../Card';
 import Gap from '../../atoms/Gap';
 import {IconMale} from '../../../assets';
+import {Button} from '../../atoms';
 
-const KostCard = ({imageKost, namaKost, alamat, kostPrice}) => {
+const KostCard = ({imageKost, namaKost, alamat, hargaKost, ...props}) => {
   return (
     <View>
       <Card>
@@ -21,15 +22,20 @@ const KostCard = ({imageKost, namaKost, alamat, kostPrice}) => {
             <View style={{alignItems: 'center'}}>
               <IconMale />
             </View>
-            <Text style={styles.gender}>Wanita</Text>
+            <Text style={styles.gender}>{}</Text>
             <Gap height={20} />
             <Text style={styles.alamatKost}>{alamat}</Text>
             <Gap height={6} />
             <Text style={styles.hargaKost}>
-              <Text style={styles.month}> {kostPrice}/month</Text>
+              <Text style={styles.month}> {hargaKost}/month</Text>
             </Text>
           </View>
         </View>
+        <Button
+          title="Details"
+          style={{width: 90, marginTop: 5, marginBottom: 5}}
+          {...props}
+        />
       </Card>
     </View>
   );

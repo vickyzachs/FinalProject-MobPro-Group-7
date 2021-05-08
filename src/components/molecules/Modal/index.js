@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   Modal as ModalRN,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
+  View,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {IconMale} from '../../../assets';
 import {Button, Gap} from '../../atoms';
 import Card from '../Card';
-import {useSelector, useDispatch} from 'react-redux';
 
 const Modal = ({...props}) => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Modal = ({...props}) => {
               </View>
               <View style={{marginRight: 29}}>
                 <Gap height={8} />
-                <Text style={styles.namaKost}>Kost Mizpa</Text>
+                <Text style={styles.namaKost}></Text>
                 <Gap height={17} />
                 <View style={{alignItems: 'center'}}>
                   <IconMale />

@@ -4,18 +4,19 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import Router from './router';
 import FlashMessage from 'react-native-flash-message';
-import {HomeScreen} from './pages';
 import {store} from './redux';
+import {AddKost, HomeScreen} from './pages';
 
 const App = () => {
   return (
     <Provider store={store}>
-      {/* <NavigationContainer>
-        <Router />
-        <FlashMessage position="top" />
-      </NavigationContainer> */}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <AddKost />
     </Provider>
+    //   <NavigationContainer>
+    //     <Router />
+    //     <FlashMessage position="top" />
+    //   </NavigationContainer>
   );
 };
 
