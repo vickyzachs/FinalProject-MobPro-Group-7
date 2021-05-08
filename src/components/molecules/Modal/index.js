@@ -1,14 +1,34 @@
-import React from 'react';
-import {Image, Text, View, Modal as ModalRN, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Image,
+  Modal as ModalRN,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import {IconMale} from '../../../assets';
 import {Button, Gap} from '../../atoms';
 import Card from '../Card';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Modal = ({...props}) => {
+  const dispatch = useDispatch();
+  const modal = true;
+  const globalState = useSelector(state => state);
   return (
-    <ModalRN transparent={true} {...props}>
+    <ModalRN
+      transparent={true}
+      {...props}
+      animationType="fade"
+      visible={globalState.toggleModal}>
       <View style={{flex: 1, backgroundColor: '#000000aa'}}>
-        <View style={{flex: 1}}>
+        <TouchableOpacity
+          style={{flex: 1}}
+          activeOpacity={0.9}
+          onPress={() => {
+            dispatch({type: 'SET_MODAL', inputValue: !modal});
+          }}>
           <Card
             style={{
               height: 210,
@@ -45,9 +65,9 @@ const Modal = ({...props}) => {
                 </Text>
               </View>
             </View>
-            <Button title="Book Now" style={{width: 325, marginTop: 10}} />
+            <Button title="Book Now" style={{width: 340, marginTop: 10}} />
           </Card>
-        </View>
+        </TouchableOpacity>
       </View>
     </ModalRN>
   );

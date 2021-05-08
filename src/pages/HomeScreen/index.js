@@ -1,21 +1,15 @@
 import React from 'react';
-import {useState} from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {IconBell} from '../../assets';
 import {Header, KostCard, Modal, SearchBar} from '../../components';
 
 const HomeScreen = () => {
-  const [toggleModal, setToggleModal] = useState(false);
+  const dispatch = useDispatch();
   return (
     <View style={{...styles.screen}}>
       <View style={styles.header}>
-        <Modal visible={toggleModal} />
+        <Modal visible={true} />
         <Header greetings="Good afternoon Clifford," />
         <TouchableOpacity activeOpacity={0.5}>
           <IconBell />
@@ -26,7 +20,7 @@ const HomeScreen = () => {
         <ScrollView>
           <TouchableOpacity
             onPress={() => {
-              setToggleModal(!toggleModal);
+              dispatch({type: 'SET_MODAL', inputValue: true});
             }}
             activeOpacity={0.9}>
             <KostCard />

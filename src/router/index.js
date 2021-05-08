@@ -33,11 +33,6 @@ const Router = () => {
         component={SignUp}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="SignIn"
-        component={SignIn}
-        options={{headerShown: false}}
-      />
     </Stack.Navigator>
   );
 };
