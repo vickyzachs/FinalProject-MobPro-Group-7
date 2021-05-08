@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {showMessage} from 'react-native-flash-message';
+import {launchImageLibrary} from 'react-native-image-picker';
 import RadioForm from 'react-native-simple-radio-button';
 import {IconLogo, LogoUpload} from '../../assets';
 import {Button, Card, Gap, Header, TextInput} from '../../components';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {showMessage} from 'react-native-flash-message';
 import firebase from '../../config/Firebase';
 
 const AddKost = ({navigation}) => {
@@ -25,12 +25,13 @@ const AddKost = ({navigation}) => {
       tipeKost: tipeKost,
       photo: photoBase64,
     };
+    console.log(data);
     firebase.database().ref('mitraKost').push(data);
   };
 
   const radio_props = [
-    {label: 'Laki-Laki', value: 0},
-    {label: 'Perempuan', value: 1},
+    {label: 'Laki-Laki', value: 'Laki-Laki'},
+    {label: 'Perempuan', value: 'Perempuan'},
   ];
 
   const getKostImage = () => {

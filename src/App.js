@@ -11,8 +11,8 @@ const App = () => {
     //  <Router />
     //  <FlashMessage position="top"/>
     // </NavigationContainer>
-    <HomeScreenMitra />
-    //<AddKost/>
+    // <HomeScreenMitra />
+    <AddKost/>
   );
 };
 

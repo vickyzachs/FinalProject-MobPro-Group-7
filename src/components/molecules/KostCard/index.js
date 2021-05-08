@@ -4,7 +4,8 @@ import Card from '../Card';
 import Gap from '../../atoms/Gap';
 import {IconMale} from '../../../assets';
 
-const KostCard = ({imageKost, namaKost, alamat, kostPrice}) => {
+const KostCard = ({imageKost, namaKost, alamat, kostPrice, tipeKost}) => {
+
   return (
     <View>
       <Card>
@@ -21,7 +22,7 @@ const KostCard = ({imageKost, namaKost, alamat, kostPrice}) => {
             <View style={{alignItems: 'center'}}>
               <IconMale />
             </View>
-            <Text style={styles.gender}>Wanita</Text>
+            <Text style={styles.gender}>{tipeKost}</Text>
             <Gap height={20} />
             <Text style={styles.alamatKost}>{alamat}</Text>
             <Gap height={6} />
