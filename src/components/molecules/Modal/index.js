@@ -4,17 +4,17 @@ import {IconMale} from '../../../assets';
 import {Button, Gap} from '../../atoms';
 import Card from '../Card';
 
-const Modal = () => {
+const Modal = ({...props}) => {
   return (
-    <ModalRN transparent={true}>
+    <ModalRN transparent={true} {...props}>
       <View style={{flex: 1, backgroundColor: '#000000aa'}}>
-        <View>
+        <View style={{flex: 1}}>
           <Card
             style={{
               height: 210,
               width: 350,
               alignSelf: 'center',
-              marginTop: 80,
+              marginTop: 250,
               padding: 5,
             }}>
             <View style={styles.container}>

@@ -1,20 +1,21 @@
 import React from 'react';
+import {useState} from 'react';
 import {
-  Image,
-  Modal,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {IconBell, IconMale} from '../../assets';
-import {Card, Gap, Header, KostCard, SearchBar} from '../../components';
+import {IconBell} from '../../assets';
+import {Header, KostCard, Modal, SearchBar} from '../../components';
 
 const HomeScreen = () => {
+  const [toggleModal, setToggleModal] = useState(false);
   return (
-    <View style={styles.screen}>
+    <View style={{...styles.screen}}>
       <View style={styles.header}>
+        <Modal visible={toggleModal} />
         <Header greetings="Good afternoon Clifford," />
         <TouchableOpacity activeOpacity={0.5}>
           <IconBell />
@@ -23,7 +24,13 @@ const HomeScreen = () => {
       <SearchBar placeholder="Search here" />
       <View style={styles.mainContent}>
         <ScrollView>
-          <KostCard />
+          <TouchableOpacity
+            onPress={() => {
+              setToggleModal(!toggleModal);
+            }}
+            activeOpacity={0.9}>
+            <KostCard />
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </View>
