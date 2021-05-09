@@ -8,14 +8,12 @@ import {
   View,
   Modal as ModalRN,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {IconBell, IconMale} from '../../assets';
+import {IconBell, IconFemale, IconMale} from '../../assets';
 import {Button, Card, Gap, Header, KostCard, SearchBar} from '../../components';
 import firebase from '../../config/Firebase';
 
 const HomeScreen = () => {
   const [dataKost, setDataKost] = useState([]);
-  const dispatch = useDispatch();
   const [selectedKost, setSelectedKost] = useState({});
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -38,14 +36,13 @@ const HomeScreen = () => {
         }
       });
   }, []);
-
   return (
     <View style={{...styles.screen}}>
       <ModalRN transparent={true} animationType="fade" visible={toggleModal}>
         <View style={{flex: 1, backgroundColor: '#000000aa'}}>
           <TouchableOpacity
             style={{flex: 1}}
-            activeOpacity={0.9}
+            activeOpacity={0.97}
             onPress={() => {
               setToggleModal(!toggleModal);
             }}>
@@ -57,8 +54,17 @@ const HomeScreen = () => {
                 marginTop: 250,
                 padding: 5,
               }}>
-              <View style={styles.container}>
-                <View style={{marginLeft: 10}}>
+              <View
+                style={{
+                  ...styles.container,
+                  justifyContent: 'space-between',
+                  width: 380,
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    width: 190,
+                  }}>
                   <View style={styles.containerGambarKost}>
                     <Image
                       style={styles.gambarKost}
@@ -66,26 +72,41 @@ const HomeScreen = () => {
                     />
                   </View>
                 </View>
-                <View style={{marginRight: 29}}>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    width: 190,
+                  }}>
                   <Gap height={8} />
-                  <Text style={styles.namaKost}>{selectedKost}</Text>
+                  <Text style={styles.namaKost}>{selectedKost.namaKost}</Text>
                   <Gap height={17} />
-                  <View style={{alignItems: 'center'}}>
-                    <IconMale />
-                  </View>
-                  <Text style={styles.gender}>Wanita</Text>
+                  {/* {selectedKost.tipeKost.value === 1 ? (
+                    <View>
+                      <View style={{alignItems: 'center'}}>
+                        <IconMale />
+                      </View>
+                      <Text style={styles.gender}>Laki-Laki</Text>
+                    </View>
+                  ) : (
+                    <View>
+                      <View style={{alignItems: 'center'}}>
+                        <IconFemale />
+                      </View>
+                      <Text style={styles.gender}>Perempuan</Text>
+                    </View>
+                  )} */}
                   <Gap height={20} />
                   <Text style={styles.alamatKost}>
-                    Jalan Kanaan, Airmadidi Bawah
+                    {selectedKost.alamatKost}
                   </Text>
                   <Gap height={6} />
                   <Text style={styles.hargaKost}>
-                    Rp.750.000
-                    <Text style={styles.month}> /month</Text>
+                    {selectedKost.hargaKost}
+                    <Text style={styles.month}>/month</Text>
                   </Text>
                 </View>
               </View>
-              <Button title="Book Now" style={{width: 340, marginTop: 10}} />
+              <Button title="Book Now" style={{width: 320, marginTop: 10}} />
             </Card>
           </TouchableOpacity>
         </View>
@@ -99,14 +120,15 @@ const HomeScreen = () => {
       </View>
       <SearchBar placeholder="Search here" />
       <View style={styles.mainContent}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {dataKost.map(item => (
             <KostCard
               key={item.id}
-              imageKost={item.photo}
-              namaKost={item.kostName}
-              alamat={item.address}
-              kostPrice={item.kostPrice}
+              gambarKost={item.photo}
+              namaKost={item.namaKost}
+              alamat={item.alamatKost}
+              hargaKost={item.hargaKost}
+              tipeKost={item.tipeKost.value}
               onPress={() => {
                 setSelectedKost(item);
                 console.log(selectedKost);

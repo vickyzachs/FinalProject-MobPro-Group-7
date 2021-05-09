@@ -7,28 +7,19 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
 import {IconMale} from '../../../assets';
 import {Button, Gap} from '../../atoms';
 import Card from '../Card';
 
 const Modal = ({...props}) => {
-  const dispatch = useDispatch();
   const modal = true;
-  const globalState = useSelector(state => state);
   return (
-    <ModalRN
-      transparent={true}
-      {...props}
-      animationType="fade"
-      visible={globalState.toggleModal}>
+    <ModalRN transparent={true} {...props} animationType="fade">
       <View style={{flex: 1, backgroundColor: '#000000aa'}}>
         <TouchableOpacity
           style={{flex: 1}}
           activeOpacity={0.9}
-          onPress={() => {
-            dispatch({type: 'SET_MODAL', inputValue: !modal});
-          }}>
+          onPress={() => {}}>
           <Card
             style={{
               height: 210,

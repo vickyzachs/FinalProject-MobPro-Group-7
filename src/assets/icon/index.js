@@ -9,8 +9,10 @@ import IconUKost from './UKostLogo.svg';
 import LogoUpload from './logo_upload.svg';
 import IconPemilik from './pemilik_kost 1.svg';
 import IconPencari from './pencari_kost 1.svg';
+import IconFemale from './female.svg';
 
 export {
+  IconFemale,
   IconPencari,
   IconPemilik,
   IconMale,

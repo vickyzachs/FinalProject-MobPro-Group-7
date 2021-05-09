@@ -1,38 +1,54 @@
-import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-
+import React from 'react';
 import {
-  SignUp,
-  SignIn,
   HomeScreen,
-  SplashScreen,
-  Profile,
   HomeScreenMitra,
+  Profile,
+  SignIn,
+  SignUp,
+  SplashScreen,
 } from '../pages';
+import {useSelector} from 'react-redux';
+
+const Tab = createBottomTabNavigator();
+
+const BottomNavigator = () => {
+  const globalState = useSelector(state => state);
+  return (
+    <Tab.Navigator>
+      {globalState.role === 1 ? (
+        <Tab.Screen
+          name="HomeScreenMitra"
+          component={HomeScreenMitra}
+          options={{tabBarLabel: 'Home'}}
+        />
+      ) : (
+        <Tab.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{tabBarLabel: 'Home'}}
+        />
+      )}
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{tabBarLabel: 'Profile'}}
+      />
+    </Tab.Navigator>
+  );
+};
 
 const Stack = createStackNavigator();
 
 const Router = () => {
+  const globalState = useSelector(state => state);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HomeScreenMitra"
-        component={HomeScreenMitra}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Profile"
-        component={Profile}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -45,6 +61,19 @@ const Router = () => {
         component={SignUp}
         options={{headerShown: false}}
       />
+      {globalState.role === 1 ? (
+        <Stack.Screen
+          name="HomeScreenMitra"
+          component={BottomNavigator}
+          options={{headerShown: false}}
+        />
+      ) : (
+        <Stack.Screen
+          name="HomeScreen"
+          component={BottomNavigator}
+          options={{headerShown: false}}
+        />
+      )}
     </Stack.Navigator>
   );
 };

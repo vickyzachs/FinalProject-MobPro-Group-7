@@ -1,16 +1,15 @@
-import {act} from 'react-test-renderer';
-
 const initialState = {
-  toggleModal: false,
+  role: 1,
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === 'SET_MODAL') {
+  if (action.type === 'SET_ROLE') {
     return {
       ...state,
-      toggleModal: action.inputValue,
+      role: action.inputValue,
     };
   }
+
   return state;
 };
 
