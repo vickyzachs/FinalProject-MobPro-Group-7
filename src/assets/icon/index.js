@@ -7,11 +7,21 @@ import IconUser from './user.svg';
 import IconPassword from './password.svg';
 import IconUKost from './UKostLogo.svg';
 import LogoUpload from './logo_upload.svg';
+import IconPemilik from './pemilik_kost 1.svg';
+import IconPencari from './pencari_kost 1.svg';
+import IconFemale from './female.svg';
+import IconReset from './reset.svg';
+import IconHome from './home.png';
 import Logout from './logout.svg';
 import Home from './home.svg';
 import Heart from './heart.svg';
 
 export {
+  IconHome,
+  IconReset,
+  IconFemale,
+  IconPencari,
+  IconPemilik,
   IconMale,
   IconBell,
   IconSearch,

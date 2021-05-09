@@ -1,18 +1,19 @@
-import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Router from './router';
+import {NavigationContainer} from '@react-navigation/native';
 import FlashMessage from 'react-native-flash-message';
-import {AddKost, HomeScreenMitra} from './pages';
+import 'react-native-gesture-handler';
+import Router from './router';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 const App = () => {
   return (
-    // <NavigationContainer>
-    //  <Router />
-    //  <FlashMessage position="top"/>
-    // </NavigationContainer>
-    // <HomeScreenMitra />
-    <AddKost />
+    <Provider store={store}>
+      <NavigationContainer>
+        <Router />
+        <FlashMessage position="top" />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

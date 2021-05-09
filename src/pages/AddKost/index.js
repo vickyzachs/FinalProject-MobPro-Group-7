@@ -8,9 +8,9 @@ import {Button, Card, Gap, Header, TextInput} from '../../components';
 import firebase from '../../config/Firebase';
 
 const AddKost = ({navigation}) => {
-  const [kostName, setKostName] = useState('');
-  const [address, setAddress] = useState('');
-  const [kostPrice, setKostPrice] = useState('');
+  const [namaKost, setNamaKost] = useState('');
+  const [alamatKost, setAlamatKost] = useState('');
+  const [hargaKost, setHargaKost] = useState('');
   const [tipeKost, setTipe] = useState('');
 
   const [photo, setPhoto] = useState('');
@@ -19,9 +19,9 @@ const AddKost = ({navigation}) => {
 
   const onSubmit = () => {
     const data = {
-      kostName: kostName,
-      address: address,
-      kostPrice: kostPrice,
+      namaKost: namaKost,
+      alamatKost: alamatKost,
+      hargaKost: hargaKost,
       tipeKost: tipeKost,
       photo: photoBase64,
     };
@@ -65,7 +65,7 @@ const AddKost = ({navigation}) => {
       <Gap height={24} />
       <View style={styles.textAreaWrapper}>
         <Header greetings="Good afternoon Users," style={styles.customHeader} />
-        <Text style={styles.textBiasa}>Add Kost</Text>
+        <Text style={styles.textBiasa}>Tambah Kost</Text>
       </View>
       <Card style={styles.card}>
         <Gap height={20} />
@@ -77,27 +77,24 @@ const AddKost = ({navigation}) => {
         </TouchableOpacity>
         <Gap height={20} />
         <TextInput
-          style={styles.inputText}
-          placeholder="Input your kost name"
-          value={kostName}
-          onChangeText={value => setKostName(value)}
+          placeholder="Masukan nama kost"
+          value={namaKost}
+          onChangeText={value => setNamaKost(value)}
         />
         <Gap height={20} />
         <TextInput
-          style={styles.inputText}
-          placeholder="Input your kost address"
-          value={address}
-          onChangeText={value => setAddress(value)}
+          placeholder="Masukan alamat kost"
+          value={alamatKost}
+          onChangeText={value => setAlamatKost(value)}
         />
         <Gap height={20} />
         <TextInput
-          style={styles.inputText}
-          placeholder="Input your kost price"
-          value={kostPrice}
-          onChangeText={value => setKostPrice(value)}
+          placeholder="Masukan harga kost"
+          value={hargaKost}
+          onChangeText={value => setHargaKost(value)}
         />
-        <Gap height={10} />
-        <Text style={styles.textBiasa}>Choose your type kost</Text>
+        <Gap height={20} />
+        <Text style={styles.textBiasa}>Pilih tipe kost anda</Text>
         <Gap height={5} />
         <View>
           <RadioForm
