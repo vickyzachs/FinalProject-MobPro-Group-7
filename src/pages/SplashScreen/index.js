@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {IconUKost} from '../../assets';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
+      console.log('test');
       navigation.replace('SignIn');
     }, 3000);
   }, []);

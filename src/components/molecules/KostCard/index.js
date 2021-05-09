@@ -21,7 +21,8 @@ const KostCard = ({
           activeOpacity={0.8}>
           <View style={{marginLeft: 10}}>
             <View style={styles.containerGambarKost}>
-              <Image style={styles.gambarKost} source={gambarKost} />
+              {/* <Image style={styles.gambarKost} source={gambarKost} /> */}
+              <Image style={styles.gambarKost} />
             </View>
           </View>
           <View style={{marginRight: 29}}>

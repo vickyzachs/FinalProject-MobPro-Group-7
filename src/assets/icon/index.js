@@ -12,6 +12,9 @@ import IconPencari from './pencari_kost 1.svg';
 import IconFemale from './female.svg';
 import IconReset from './reset.svg';
 import IconHome from './home.png';
+import Logout from './logout.svg';
+import Home from './home.svg';
+import Heart from './heart.svg';
 
 export {
   IconHome,
@@ -28,4 +31,7 @@ export {
   IconPassword,
   IconUKost,
   LogoUpload,
+  Logout,
+  Home,
+  Heart,
 };

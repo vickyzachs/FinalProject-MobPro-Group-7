@@ -56,7 +56,7 @@ const HomeScreenMitra = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.mainContent}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.TextBiasa}>My Own List Kost</Text>
           {dataKost.map(item => (
             <KostCard
@@ -65,6 +65,7 @@ const HomeScreenMitra = ({navigation}) => {
               namaKost={item.kostName}
               alamat={item.address}
               kostPrice={item.kostPrice}
+              tipeKost={item.tipeKost.value}
             />
           ))}
         </ScrollView>

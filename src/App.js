@@ -1,5 +1,5 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import FlashMessage from 'react-native-flash-message';
 import 'react-native-gesture-handler';
 import Router from './router';

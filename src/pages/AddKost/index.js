@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {showMessage} from 'react-native-flash-message';
+import {launchImageLibrary} from 'react-native-image-picker';
 import RadioForm from 'react-native-simple-radio-button';
 import {IconLogo, LogoUpload} from '../../assets';
 import {Button, Card, Gap, Header, TextInput} from '../../components';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {showMessage} from 'react-native-flash-message';
 import firebase from '../../config/Firebase';
 
 const AddKost = ({navigation}) => {
@@ -25,12 +25,13 @@ const AddKost = ({navigation}) => {
       tipeKost: tipeKost,
       photo: photoBase64,
     };
+    console.log(data);
     firebase.database().ref('mitraKost').push(data);
   };
 
   const radio_props = [
-    {label: 'Laki-Laki', value: 0},
-    {label: 'Perempuan', value: 1},
+    {label: 'Laki-Laki', value: 'Laki-Laki'},
+    {label: 'Perempuan', value: 'Perempuan'},
   ];
 
   const getKostImage = () => {
@@ -98,16 +99,17 @@ const AddKost = ({navigation}) => {
         <View>
           <RadioForm
             radio_props={radio_props}
-            initial={0}
+            initial={2}
             buttonColor={'white'}
             labelColor={'white'}
-            formHorizontal={true}
+            formHorizontal={false}
             onPress={tipe => {
               setTipe({value: tipe});
             }}
+            selectedLabelColor={'white'}
           />
         </View>
-        <Gap height={20} />
+        <Gap height={5} />
         <Button title="Submit" onPress={onSubmit} />
       </Card>
     </View>
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     backgroundColor: '#3C3C3C',
-    height: 440,
+    height: 450,
     width: 333,
     top: 270,
     position: 'absolute',
@@ -180,5 +182,13 @@ const styles = StyleSheet.create({
   textBiasa: {
     color: 'white',
     textAlign: 'center',
+  },
+  inputText: {
+    width: 285,
+    height: 45,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    fontSize: 18,
+    paddingHorizontal: 20,
   },
 });

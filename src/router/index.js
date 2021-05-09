@@ -1,6 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
+import {Image} from 'react-native';
+import {useSelector} from 'react-redux';
 import {
   HomeScreen,
   HomeScreenMitra,
@@ -9,9 +11,6 @@ import {
   SignUp,
   SplashScreen,
 } from '../pages';
-import {useSelector} from 'react-redux';
-import {Image, View} from 'react-native';
-import {IconHome} from '../assets';
 
 const Tab = createBottomTabNavigator();
 
@@ -75,6 +74,11 @@ const Router = () => {
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         options={{headerShown: false}}
       />
       <Stack.Screen
