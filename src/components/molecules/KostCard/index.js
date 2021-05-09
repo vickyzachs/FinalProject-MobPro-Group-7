@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import Card from '../Card';
 import Gap from '../../atoms/Gap';
 import {IconMale} from '../../../assets';
+import firebase from '../../../config/Firebase';
 
 const KostCard = ({imageKost, namaKost, alamat, kostPrice, tipeKost}) => {
+  const [profile, setProfile] = useState({});
+
+
+  const getUserProfile = () => {
+    firebase
+      .database()
+      .ref(`mitraKost`)
+      .once('value', res => {
+        const photo = `data:image/jpeg;base64, ${res.val().photo}`;
+        setProfile({...res.val(), photo: photo});
+      });
+  };
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
 
   return (
     <View>
@@ -12,7 +29,7 @@ const KostCard = ({imageKost, namaKost, alamat, kostPrice, tipeKost}) => {
         <View style={styles.container}>
           <View style={{marginLeft: 10}}>
             <View style={styles.containerGambarKost}>
-              <Image style={styles.gambarKost} source={imageKost} />
+              <Image style={styles.gambarKost} source={{uri: profile.photo}} />
             </View>
           </View>
           <View style={{marginRight: 29}}>
