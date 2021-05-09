@@ -1,28 +1,34 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {IconUser} from '../../assets';
+import { StyleSheet, Text, View } from 'react-native';
+import { ProfilePicture } from '../../assets';
+import { Gap } from '../../components';
+import NavigationBottom from './NavigationBottom';
+import SignOut from './SignOut';
+
 
 const Profile = () => {
-  return (
-    <View style={styles.background}>
-      <View style={styles.container1}>
-        <View style={styles.container}>
-          <Text style={styles.textProfile}>Dummy data name</Text>
-          <Text style={styles.textEmail}>dummy@gmail.com</Text>
+    return (
+        <View style={styles.background}>
+            <View style={styles.container1}>
+                <View style={styles.container}>
+                    {/* <View style={styles.ProfPict}>
+                    <Text>Profile Picture</Text>
+                    </View> */}
+                    <Text style={styles.textProfile}>Dummy data name</Text>
+                    <Text style={styles.textEmail}>dummy@gmail.com</Text>
+                </View>
+            </View>
+            <View style={styles.centerContainer}>
+                <Text style={styles.textKost}>Kost Mizpa</Text>
+                <Text style={styles.textPayment}>Total Payment</Text>
+                <Text style={styles.payment}>450.000</Text>
+            </View>
+            {/* <Gap height={201} /> */}
+            {/* <SignOut /> */}
+            {/* <Gap height={55} /> */}
+            <NavigationBottom />
         </View>
-      </View>
-      <View style={styles.centerContainer}>
-        <Text style={styles.textKost}>Kost Mizpa</Text>
-        <Text style={styles.textPayment}>Total Payment</Text>
-        <Text style={styles.payment}>450.000</Text>
-      </View>
-      <View style={styles.bottomNavigate}>
-        <View style={styles.iconUser}>
-          <IconUser />
-        </View>
-      </View>
-    </View>
-  );
+        
+    );
 };
 
 export default Profile;
@@ -82,5 +88,3 @@ const styles = StyleSheet.create({
     height: 87,
     borderRadius: 5,
   },
-  iconUser: {},
-});
