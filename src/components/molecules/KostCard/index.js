@@ -4,33 +4,30 @@ import Card from '../Card';
 import Gap from '../../atoms/Gap';
 import {IconMale} from '../../../assets';
 
-const KostCard = () => {
+const KostCard = ({imageKost, namaKost, alamat, kostPrice, tipeKost}) => {
+
   return (
     <View>
       <Card>
         <View style={styles.container}>
           <View style={{marginLeft: 10}}>
             <View style={styles.containerGambarKost}>
-              <Image
-                style={styles.gambarKost}
-                source={require('../../../assets/KostImage/kost.png')}
-              />
+              <Image style={styles.gambarKost} source={imageKost} />
             </View>
           </View>
           <View style={{marginRight: 29}}>
             <Gap height={8} />
-            <Text style={styles.namaKost}>Kost Mizpa</Text>
+            <Text style={styles.namaKost}>{namaKost}</Text>
             <Gap height={17} />
             <View style={{alignItems: 'center'}}>
               <IconMale />
             </View>
-            <Text style={styles.gender}>Wanita</Text>
+            <Text style={styles.gender}>{tipeKost}</Text>
             <Gap height={20} />
-            <Text style={styles.alamatKost}>Jalan Kanaan, Airmadidi Bawah</Text>
+            <Text style={styles.alamatKost}>{alamat}</Text>
             <Gap height={6} />
             <Text style={styles.hargaKost}>
-              Rp.750.000
-              <Text style={styles.month}> /month</Text>
+              <Text style={styles.month}> {kostPrice}/month</Text>
             </Text>
           </View>
         </View>

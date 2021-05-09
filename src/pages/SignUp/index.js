@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconLogo, IconMessage, IconPassword, IconUser} from '../../assets';
 import {Button, Card, Gap, TextInput} from '../../components';
 import {showMessage} from 'react-native-flash-message';

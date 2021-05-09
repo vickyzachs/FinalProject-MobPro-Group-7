@@ -1,9 +1,40 @@
-import React from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity, View,Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {IconBell} from '../../assets';
-import {Header, KostCard, SearchBar} from '../../components';
+import {Header, KostCard} from '../../components';
+import firebase from '../../config/Firebase';
 
 const HomeScreenMitra = () => {
+  const [dataKost, setDataKost] = useState([]);
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref('mitraKost')
+      .on('value', res => {
+        if (res.val()) {
+          //Ubah data jadi Array
+          const rawData = res.val();
+          const mitraKostArr = [];
+          Object.keys(rawData).map(item => {
+            mitraKostArr.push({
+              id: item,
+              ...rawData[item],
+            });
+          });
+          setDataKost(mitraKostArr);
+        }
+      });
+  }, []);
+
+  console.log(dataKost);
+
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
@@ -13,10 +44,18 @@ const HomeScreenMitra = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.mainContent}>
-        <ScrollView>
-            <Text style={styles.TextBiasa}>My Own List Kost</Text>
-          <KostCard />
-          <KostCard />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text style={styles.TextBiasa}>My Own List Kost</Text>
+          {dataKost.map(item => (
+            <KostCard
+              key={item.id}
+              imageKost={item.photo}
+              namaKost={item.kostName}
+              alamat={item.address}
+              kostPrice={item.kostPrice}
+              tipeKost={item.tipeKost.value}
+            />
+          ))}
         </ScrollView>
       </View>
     </View>
@@ -39,10 +78,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 22,
   },
-  TextBiasa:{
-      color: 'white',
-      textAlign: 'center',
-  }
+  TextBiasa: {
+    color: 'white',
+    textAlign: 'center',
+  },
 });
 
 export default HomeScreenMitra;
