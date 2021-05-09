@@ -14,8 +14,16 @@ import firebase from '../../config/Firebase';
 
 const HomeScreen = () => {
   const [dataKost, setDataKost] = useState([]);
-  const [selectedKost, setSelectedKost] = useState({});
+  const [selectedKost, setSelectedKost] = useState({
+    key: 1,
+    gambarKost: '',
+    namaKost: '',
+    alamat: '',
+    hargaKost: '',
+    tipeKost: '',
+  });
   const [toggleModal, setToggleModal] = useState(false);
+  const [render, setRender] = useState(false);
 
   useEffect(() => {
     firebase
@@ -38,6 +46,33 @@ const HomeScreen = () => {
   }, []);
   return (
     <View style={{...styles.screen}}>
+      <View style={styles.header}>
+        <Header greetings="Good afternoon Clifford," />
+        <TouchableOpacity activeOpacity={0.5}>
+          <IconBell />
+        </TouchableOpacity>
+      </View>
+      <SearchBar placeholder="Search here" />
+      <View style={styles.mainContent}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {dataKost.map(item => (
+            <KostCard
+              key={item.id}
+              gambarKost={item.photo}
+              namaKost={item.namaKost}
+              alamat={item.alamatKost}
+              hargaKost={item.hargaKost}
+              tipeKost={item.tipeKost.value}
+              onPress={() => {
+                setSelectedKost(item);
+                setRender(false);
+                console.log(selectedKost);
+                setToggleModal(!toggleModal);
+              }}
+            />
+          ))}
+        </ScrollView>
+      </View>
       <ModalRN transparent={true} animationType="fade" visible={toggleModal}>
         <View style={{flex: 1, backgroundColor: '#000000aa'}}>
           <TouchableOpacity
@@ -80,7 +115,7 @@ const HomeScreen = () => {
                   <Gap height={8} />
                   <Text style={styles.namaKost}>{selectedKost.namaKost}</Text>
                   <Gap height={17} />
-                  {/* {selectedKost.tipeKost.value === 1 ? (
+                  {selectedKost.tipeKost.value === 1 ? (
                     <View>
                       <View style={{alignItems: 'center'}}>
                         <IconMale />
@@ -94,7 +129,7 @@ const HomeScreen = () => {
                       </View>
                       <Text style={styles.gender}>Perempuan</Text>
                     </View>
-                  )} */}
+                  )}
                   <Gap height={20} />
                   <Text style={styles.alamatKost}>
                     {selectedKost.alamatKost}
@@ -111,33 +146,6 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </ModalRN>
-
-      <View style={styles.header}>
-        <Header greetings="Good afternoon Clifford," />
-        <TouchableOpacity activeOpacity={0.5}>
-          <IconBell />
-        </TouchableOpacity>
-      </View>
-      <SearchBar placeholder="Search here" />
-      <View style={styles.mainContent}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {dataKost.map(item => (
-            <KostCard
-              key={item.id}
-              gambarKost={item.photo}
-              namaKost={item.namaKost}
-              alamat={item.alamatKost}
-              hargaKost={item.hargaKost}
-              tipeKost={item.tipeKost.value}
-              onPress={() => {
-                setSelectedKost(item);
-                console.log(selectedKost);
-                setToggleModal(!toggleModal);
-              }}
-            />
-          ))}
-        </ScrollView>
-      </View>
     </View>
   );
 };
