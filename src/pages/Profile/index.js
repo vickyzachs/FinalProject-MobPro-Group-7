@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { IconUser } from '../../assets';
+import { ProfilePicture } from '../../assets';
+import { Gap } from '../../components';
+import NavigationBottom from './NavigationBottom';
+import SignOut from './SignOut';
 
 
 
@@ -10,6 +13,9 @@ const Profile = () => {
         <View style={styles.background}>
             <View style={styles.container1}>
                 <View style={styles.container}>
+                    {/* <View style={styles.ProfPict}>
+                    <Text>Profile Picture</Text>
+                    </View> */}
                     <Text style={styles.textProfile}>Dummy data name</Text>
                     <Text style={styles.textEmail}>dummy@gmail.com</Text>
                 </View>
@@ -19,12 +25,12 @@ const Profile = () => {
                 <Text style={styles.textPayment}>Total Payment</Text>
                 <Text style={styles.payment}>450.000</Text>
             </View>
-            <View style={styles.bottomNavigate}>
-                <View style={styles.iconUser}>
-                    <IconUser />
-                </View>
-            </View>
+            {/* <Gap height={201} /> */}
+            {/* <SignOut /> */}
+            {/* <Gap height={55} /> */}
+            <NavigationBottom />
         </View>
+        
     );
 };
 
@@ -41,18 +47,26 @@ const styles = StyleSheet.create({
     },
     container: {
         paddingTop: 65,
-        paddingLeft: 146.01,
         height: 150,
         backgroundColor: '#272629',
-        borderRadius: 40
-        
+        borderRadius: 40,
+    },
+    ProfPict: {
+        alignItems: 'center',
+        width: 90,
+        height: 90,
+        backgroundColor: 'white',
+        borderRadius: 90,
+        justifyContent: 'center',
     },
     textProfile: {
+        alignSelf: 'center',
         fontSize: 14,
         fontWeight: 'bold',
         color: 'white',
     },
     textEmail: {
+        alignSelf: 'center',
         fontSize: 14,
         color: 'white',
     },
@@ -62,7 +76,7 @@ const styles = StyleSheet.create({
         height: 129,
         width: 311,
         alignItems: 'center',
-        marginVertical: 225,
+        marginTop: 155,
         borderRadius: 5,
     },
     textKost: {
@@ -79,14 +93,5 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         color: 'white',
-    },
-    bottomNavigate:{
-        backgroundColor: 'white',
-        paddingTop: 725,
-        height: 87,
-        borderRadius: 5,
-    },
-    iconUser: {
-        
-    },
+    }
 });
