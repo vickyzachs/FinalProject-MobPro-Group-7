@@ -7,6 +7,9 @@ import IconUser from './user.svg';
 import IconPassword from './password.svg';
 import IconUKost from './UKostLogo.svg';
 import LogoUpload from './logo_upload.svg';
+import Logout from './logout.svg';
+import Home from './home.svg';
+import Heart from './heart.svg';
 
 export {
   IconMale,
@@ -18,4 +21,7 @@ export {
   IconPassword,
   IconUKost,
   LogoUpload,
+  Logout,
+  Home,
+  Heart,
 };
