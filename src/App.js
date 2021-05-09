@@ -12,7 +12,7 @@ const App = () => {
     //  <FlashMessage position="top"/>
     // </NavigationContainer>
     // <HomeScreenMitra />
-    <AddKost/>
+    <AddKost />
   );
 };
 
