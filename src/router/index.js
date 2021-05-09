@@ -32,7 +32,12 @@ const BottomNavigator = () => {
         <Tab.Screen
           name="HomeScreenMitra"
           component={HomeScreenMitra}
-          options={{tabBarLabel: 'Home'}}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({color}) => (
+              <Image source={require('../assets/icon/home.png')} />
+            ),
+          }}
         />
       ) : (
         <Tab.Screen
@@ -49,7 +54,12 @@ const BottomNavigator = () => {
       <Tab.Screen
         name="Profile"
         component={Profile}
-        options={{tabBarLabel: 'Profile'}}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({color}) => (
+            <Image source={require('../assets/icon/profile.png')} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );
