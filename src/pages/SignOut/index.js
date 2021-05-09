@@ -1,20 +1,19 @@
 import React from 'react'
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import { Logout } from '../../../assets'
-import { Button } from '../../../components'
 
-const SignOut = ({}) => {
+const SignOut = ({navigation}) => {
     return (
             <View style={styles.logout}>
             <TouchableOpacity activeOpacity={0.7}>
                 <View style={styles.logoutIcon}>
-                    <Logout />
+                    {/* <Logout /> */}
                 </View>
                 <Text style ={{
                     ...styles.textlogout,
                     textDecorationLine: 'underline',
                     fontWeight: 'bold',
                 }}
+                onPress={() => navigation.navigate('SignIn')}
                 >Log Out</Text>
             </TouchableOpacity>
             </View>
