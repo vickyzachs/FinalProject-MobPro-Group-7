@@ -10,8 +10,12 @@ import LogoUpload from './logo_upload.svg';
 import IconPemilik from './pemilik_kost 1.svg';
 import IconPencari from './pencari_kost 1.svg';
 import IconFemale from './female.svg';
+import IconReset from './reset.svg';
+import IconHome from './home.png';
 
 export {
+  IconHome,
+  IconReset,
   IconFemale,
   IconPencari,
   IconPemilik,

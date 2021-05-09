@@ -10,13 +10,24 @@ import {
   SplashScreen,
 } from '../pages';
 import {useSelector} from 'react-redux';
+import {Image, View} from 'react-native';
+import {IconHome} from '../assets';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   const globalState = useSelector(state => state);
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+        style: {
+          position: 'absolute',
+          borderRadius: 15,
+          height: 85,
+          bottom: -15,
+        },
+      }}>
       {globalState.role === 1 ? (
         <Tab.Screen
           name="HomeScreenMitra"
@@ -27,7 +38,12 @@ const BottomNavigator = () => {
         <Tab.Screen
           name="HomeScreen"
           component={HomeScreen}
-          options={{tabBarLabel: 'Home'}}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({color}) => (
+              <Image source={require('../assets/icon/home.png')} />
+            ),
+          }}
         />
       )}
       <Tab.Screen

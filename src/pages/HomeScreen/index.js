@@ -24,6 +24,19 @@ const HomeScreen = () => {
   });
   const [toggleModal, setToggleModal] = useState(false);
   const [render, setRender] = useState(false);
+  const [userInput, setUserInput] = useState('');
+  const [resulted, setResulted] = useState([]);
+  const [search, setSearch] = useState(false);
+
+  const filterByName = () => {
+    const result = dataKost.filter(item => item.namaKost === userInput);
+    setResulted(result);
+    if (userInput.length > 0) {
+      setSearch(true);
+    } else {
+      setSearch(false);
+    }
+  };
 
   useEffect(() => {
     firebase
@@ -52,25 +65,48 @@ const HomeScreen = () => {
           <IconBell />
         </TouchableOpacity>
       </View>
-      <SearchBar placeholder="Search here" />
+      <SearchBar
+        placeholder="Cari berdasarkan nama"
+        onPress={() => {
+          filterByName();
+        }}
+        onChangeText={text => setUserInput(text)}
+      />
       <View style={styles.mainContent}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {dataKost.map(item => (
-            <KostCard
-              key={item.id}
-              gambarKost={item.photo}
-              namaKost={item.namaKost}
-              alamat={item.alamatKost}
-              hargaKost={item.hargaKost}
-              tipeKost={item.tipeKost.value}
-              onPress={() => {
-                setSelectedKost(item);
-                setRender(false);
-                console.log(selectedKost);
-                setToggleModal(!toggleModal);
-              }}
-            />
-          ))}
+          {search === false
+            ? dataKost.map(item => (
+                <KostCard
+                  key={item.id}
+                  gambarKost={item.photo}
+                  namaKost={item.namaKost}
+                  alamat={item.alamatKost}
+                  hargaKost={item.hargaKost}
+                  tipeKost={item.tipeKost.value}
+                  onPress={() => {
+                    setSelectedKost(item);
+                    setRender(false);
+                    console.log(selectedKost);
+                    setToggleModal(!toggleModal);
+                  }}
+                />
+              ))
+            : resulted.map(item => (
+                <KostCard
+                  key={item.id}
+                  gambarKost={item.photo}
+                  namaKost={item.namaKost}
+                  alamat={item.alamatKost}
+                  hargaKost={item.hargaKost}
+                  tipeKost={item.tipeKost.value}
+                  onPress={() => {
+                    setSelectedKost(item);
+                    setRender(false);
+                    console.log(selectedKost);
+                    setToggleModal(!toggleModal);
+                  }}
+                />
+              ))}
         </ScrollView>
       </View>
       <ModalRN transparent={true} animationType="fade" visible={toggleModal}>
