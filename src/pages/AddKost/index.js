@@ -8,9 +8,9 @@ import {Button, Card, Gap, Header, TextInput} from '../../components';
 import firebase from '../../config/Firebase';
 
 const AddKost = ({navigation}) => {
-  const [kostName, setKostName] = useState('');
-  const [address, setAddress] = useState('');
-  const [kostPrice, setKostPrice] = useState('');
+  const [namaKost, setNamaKost] = useState('');
+  const [alamatKost, setAlamatKost] = useState('');
+  const [hargaKost, setHargaKost] = useState('');
   const [tipeKost, setTipe] = useState('');
 
   const [photo, setPhoto] = useState('');
@@ -19,9 +19,9 @@ const AddKost = ({navigation}) => {
 
   const onSubmit = () => {
     const data = {
-      kostName: kostName,
-      address: address,
-      kostPrice: kostPrice,
+      namaKost: namaKost,
+      alamatKost: alamatKost,
+      hargaKost: hargaKost,
       tipeKost: tipeKost,
       photo: photoBase64,
     };
@@ -65,7 +65,7 @@ const AddKost = ({navigation}) => {
       <Gap height={24} />
       <View style={styles.textAreaWrapper}>
         <Header greetings="Good afternoon Users," style={styles.customHeader} />
-        <Text style={styles.textBiasa}>Add Kost</Text>
+        <Text style={styles.textBiasa}>Tambah Kost</Text>
       </View>
       <Card style={styles.card}>
         <Gap height={20} />
@@ -77,38 +77,39 @@ const AddKost = ({navigation}) => {
         </TouchableOpacity>
         <Gap height={20} />
         <TextInput
-          placeholder="Input your kost name"
-          value={kostName}
-          onChangeText={value => setKostName(value)}
+          placeholder="Masukan nama kost"
+          value={namaKost}
+          onChangeText={value => setNamaKost(value)}
         />
         <Gap height={20} />
         <TextInput
-          placeholder="Input your kost address"
-          value={address}
-          onChangeText={value => setAddress(value)}
+          placeholder="Masukan alamat kost"
+          value={alamatKost}
+          onChangeText={value => setAlamatKost(value)}
         />
         <Gap height={20} />
         <TextInput
-          placeholder="Input your kost price"
-          value={kostPrice}
-          onChangeText={value => setKostPrice(value)}
+          placeholder="Masukan harga kost"
+          value={hargaKost}
+          onChangeText={value => setHargaKost(value)}
         />
         <Gap height={20} />
-        <Text style={styles.textBiasa}>Choose your type kost</Text>
+        <Text style={styles.textBiasa}>Pilih tipe kost anda</Text>
         <Gap height={5} />
         <View>
           <RadioForm
             radio_props={radio_props}
-            initial={0}
+            initial={2}
             buttonColor={'white'}
             labelColor={'white'}
-            formHorizontal={true}
+            formHorizontal={false}
             onPress={tipe => {
               setTipe({value: tipe});
             }}
+            selectedLabelColor={'white'}
           />
         </View>
-        <Gap height={20} />
+        <Gap height={5} />
         <Button title="Submit" onPress={onSubmit} />
       </Card>
     </View>
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     backgroundColor: '#3C3C3C',
-    height: 440,
+    height: 450,
     width: 333,
     top: 270,
     position: 'absolute',
@@ -181,5 +182,13 @@ const styles = StyleSheet.create({
   textBiasa: {
     color: 'white',
     textAlign: 'center',
+  },
+  inputText: {
+    width: 285,
+    height: 45,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    fontSize: 18,
+    paddingHorizontal: 20,
   },
 });

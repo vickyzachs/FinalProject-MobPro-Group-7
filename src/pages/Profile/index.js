@@ -1,67 +1,49 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { Gap } from '../../components';
-import NavigationBottom from './NavigationBottom';
 import SignOut from '../SignOut';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {showMessage} from 'react-native-flash-message';
 import firebase from '../../config/Firebase';
 
 
-const Profile = (route) => {
+const Profile = ({route}) => {
 
     const [photo, setPhoto] = useState('');
     const [hasPhoto, setHasPhoto] = useState(false);
     const [photobase64, setPhotoBase64] = useState('')
-
-//     const {uid} = route.params;
-
-//   const getUserProfile = () => {
-//     firebase
-//       .database()
-//       .ref(`users/${uid}/`)
-//       .once('value', res => {
-//         const photo = `data:image/jpeg;base64, ${res.val().photo}`;
-//         setProfile({...res.val(), photo: photo});
-//       });
-//   };
+    const [setprofile, setProfile] = useState({
+      nama: '',
+      email: '',
+    });
 
     const getImage = () => {
-        launchImageLibrary({maxHeight: 200, maxWidth: 200, includeBase64: true}, (res)=>{
+        launchImageLibrary(
+          {maxHeight: 200, maxWidth: 200, includeBase64: true}, 
+          res => {
             if(res.didCancel){
                 setHasPhoto(false);
                 showMessage({
                     message: 'Upload Photo dibatalkan',
                     type: 'default',
                     backgroundColor: '#D9435E',
-                    color: 'white', 
+                    color: 'white',
                   });
             }else {
                 setPhoto(res.uri);
                 setPhotoBase64(res.base64);
                 setHasPhoto(true);
             }
-        })
-    }
-
-    const onSubmit = () => {
-        firebase
-        .auth()
-        .createUserWithEmailAndPassword()
-        .then(res => {
-            const uid = res.user.uid;
-            const data = {
-                photo: photobase64,
-            };
-            firebase.database().ref(`users/${uid}`).set(data);
-        });
+          },
+        );
     };
 
     return (
         <View style={styles.background}>
             <View style={styles.container1}>
-                <View style={styles.container}>
-                <TouchableOpacity onPress={getImage} activeOpacity={0.7}>
+              {/* <View style={styles.avatarWrapper}> */}
+              <View style={styles.container}>
+                <TouchableOpacity onPress={getImage}>
                     {hasPhoto && (
                         <Image source={{uri: photo}} style={styles.avatar}/>
                     )}
@@ -77,7 +59,8 @@ const Profile = (route) => {
                 <Text style={styles.textProfile}>Dummy data name</Text>
                     <Text style={styles.textEmail}>dummy@gmail.com</Text>
                 </View>
-                </View>
+              </View>
+                
             </View>
             <View style={styles.centerContainer}>
                 <Text style={styles.textKost}>Kost Mizpa</Text>
@@ -87,7 +70,6 @@ const Profile = (route) => {
             <Gap height={201} />
             <SignOut />
             <Gap height={55} />
-            <NavigationBottom />
         </View>
         
     );
@@ -96,6 +78,9 @@ const Profile = (route) => {
 export default Profile;
 
 const styles = StyleSheet.create({
+  avatarWrapper: {
+    alignItems: 'center',
+  },
     background: {
         flex: 1,
         backgroundColor: '#555555',
@@ -112,13 +97,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     ProfPict: {
-        alignItems: 'center',
         width: 57,
         height: 57,
+        borderRadius: 100,
         backgroundColor: 'white',
-        borderRadius: 90,
+        borderWidth: 1,
+        alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 60,
+        marginLeft: 80,
     },
     textAddPhoto: {
         fontSize: 14,
@@ -168,5 +154,6 @@ const styles = StyleSheet.create({
         height: 57,
         width: 57,
         borderRadius: 90,
-    }
+        marginLeft: 80,
+    },
 });

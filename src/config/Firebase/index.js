@@ -1,15 +1,15 @@
 import firebase from 'firebase';
 
 var firebaseConfig = {
-    apiKey: 'AIzaSyDaR7xn1FlEHrZTICtZGbbbSP99fwgQ-PE',
-    authDomain: 'ukost-5f0df.firebaseapp.com',
-    databaseURL: 'https://ukost-5f0df-default-rtdb.firebaseio.com',
-    projectId: 'ukost-5f0df',
-    storageBucket: 'ukost-5f0df.appspot.com',
-    messagingSenderId: '906015109511',
-    appId: '1:906015109511:web:e067c2987458ce37d96322',
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
-  export default firebase;
+  apiKey: 'AIzaSyAm6GZPe59-3kC5zdU_29cQSmLRer4jd6g',
+  authDomain: 'u-kost-e0bd2.firebaseapp.com',
+  databaseURL: 'https://u-kost-e0bd2-default-rtdb.firebaseio.com',
+  projectId: 'u-kost-e0bd2',
+  storageBucket: 'u-kost-e0bd2.appspot.com',
+  messagingSenderId: '1010317949884',
+  appId: '1:1010317949884:web:1040175a83c530dbc409b9',
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+export default firebase;
